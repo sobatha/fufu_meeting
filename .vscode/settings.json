@@ -1,0 +1,18 @@
+{
+  "editor.formatOnSave": true,
+  "svelte.plugin.typescript.enable": true,
+  "eslint.validate": [
+      "javascript",
+      "typesript",
+      "svelte"
+  ],
+  "svelte.plugin.svelte.format.enable": false,
+  "eslint.workingDirectories": ["./src"],
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[svelte]": {
+      "editor.defaultFormatter": "svelte.svelte-vscode"
+    }, // Prettier を使わないようにする
+
+    
+    
+}
