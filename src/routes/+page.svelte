@@ -1,4 +1,7 @@
 <script lang="ts">
+	import Button from '$lib/components/Button.svelte';
+	import SendIcon from '$lib/components/icons/SendIcon.svelte';
+
 	let isRecording = false;
 	let chunks: Blob[] = [];
 	let mediaRecorder = setupMediaRecorder();
@@ -68,25 +71,33 @@
 	}
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 {#await mediaRecorder then recorder}
 	<div>
-		<button
-			type="button"
+		<Button
+			onClick={() => onClickStart(recorder)}
+			disabled={isRecording}
 			id="buttonStart"
-			on:click={() => onClickStart(recorder)}
-			disabled={isRecording}>Start</button
+			className={`${isRecording ? 'is-light' : 'is-primary'}`}
 		>
-		<button
-			type="button"
+			Start
+		</Button>
+		<Button
+			onClick={() => onClickStop(recorder)}
+			disabled={!isRecording}
 			id="buttonStop"
-			on:click={() => onClickStop(recorder)}
-			disabled={!isRecording}>Stop</button
+			className={`${isRecording ? 'is-danger' : 'is-light'}`}
 		>
+			Stop
+		</Button>
 	</div>
-	<button type="button" on:click={uploadRecording}>送信</button>
+	<Button onClick={uploadRecording} className="is-primary">
+		<svelte:fragment slot="icon">
+			<SendIcon />
+		</svelte:fragment>
+		送信
+	</Button>
 {/await}
+
 <div>
 	<audio controls id="player" />
 </div>

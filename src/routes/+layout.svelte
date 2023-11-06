@@ -1,17 +1,20 @@
-<div id='contents' class='container' >
-  <nav class='is-flex is-flex-direction-column'>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-  </nav>
+<script>
+	import 'bulma/css/bulma.css';
+	import 'bulma/sass/utilities/initial-variables.sass';
+</script>
 
-  <slot></slot>
+<section class="hero is-primary is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        夫婦ミーティング🧑‍🤝‍🧑
+      </h1>
+    </div>
+</section>
+
+<div id="contents" class="container mt-6">
+	<slot />
 </div>
 
-<style lang='scss'>
+<style lang="scss">
 </style>
-
-<script>
-  import 'bulma/css/bulma.css'
-  import 'bulma/sass/utilities/initial-variables.sass'
-</script>
