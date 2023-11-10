@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 	import { isAudioElement } from '$lib/utils/typeGuard';
 
 	export let isRecording: boolean;
@@ -65,12 +66,10 @@
 	};
 </script>
 
-{#if isRecorderReady}
-	{#if !mediaRecorder}
-		<p>MediaRecorder is not ready.</p>
-	{/if}
-{:else}
-	<p>MediaRecorder is being prepared...</p>
+{#if !isRecorderReady}
+<div class="py-2 px-4 loader-wrapper">
+	<Loader />
+</div>
 {/if}
 
 <div>
@@ -93,3 +92,18 @@
 </div>
 
 <audio controls id="player" aria-disabled={!isRecorderReady} />
+
+<style>
+	.loader-wrapper {
+		height: calc(100vh - 84px);
+		width: 100dvw;
+		background: rgba(224, 234, 229, 0.7);
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		top: -3rem;
+		left: 0;
+		z-index: 9999;
+	}
+</style>

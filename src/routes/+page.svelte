@@ -4,8 +4,6 @@
 	let isRecording = false;
 	let chunks: Blob[] = [];
 
-
-
 	async function uploadRecording() {
 		if (chunks.length === 0) return;
 
@@ -30,21 +28,15 @@
 	}
 </script>
 
+<Player {isRecording} {chunks} />
 
-		<Player
-			{isRecording}
-			{chunks}
-		/>
-
-		<!-- <Button onClick={uploadRecording} className="is-primary">
+<!-- <Button onClick={uploadRecording} className="is-primary">
 			<svelte:fragment slot="icon">
 				<SendIcon />
 			</svelte:fragment>
 			送信
 		</Button> -->
-	<!-- {:else} -->
-		<p>MediaRecorder is not ready.</p>
-
+<!-- {:else} -->
 
 <style>
 </style>
